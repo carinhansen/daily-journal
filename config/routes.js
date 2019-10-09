@@ -22,6 +22,7 @@ module.exports.routes = {
   'GET /contact':            { action:   'view-contact' },
   'GET /overview':           { action:   'view-overview' },
   'GET /add-story':          { action: 'view-add-story' },
+  'GET /your-stories':          { action: 'view-your-stories' },
 
 
   'GET /signup':             { action: 'entrance/view-signup' },
