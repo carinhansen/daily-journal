@@ -27,6 +27,16 @@ module.exports = {
       }
       res.redirect('/your-stories');
     });
+  },
+  delete:function(req, res){
+    Story.destroy({id:req.params.id}).exec(function(err){
+      if(err){
+        res.send(500, {error: 'DB Error'});
+      }
+      res.redirect('/your-stories');
+    });
+
+    return false;
   }
 };
 

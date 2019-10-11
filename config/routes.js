@@ -23,6 +23,7 @@ module.exports.routes = {
   'get /your-stories':                   'StoryController.list',
   'get /your-stories/add':               'StoryController.add',
   'POST /your-stories/create':           'StoryController.create',
+  'POST /your-stories/delete/:id':           'StoryController.delete',
 
 
 
