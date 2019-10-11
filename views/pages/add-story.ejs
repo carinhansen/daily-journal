@@ -3,13 +3,18 @@
     <h1>Add a story to your journal</h1>
     <div class="q-and-a">
       <hr class="mt-4 mb-4"/>
-        <div class="form-row">
-          <label for="Title">The title</label>
-          <input class="form-control form-control-sm" type="text" id="title" />
-          <label for="text">Your story</label>
-          <textarea class="form-control" name="text" id="story"></textarea>
-          <button type="button" class="btn btn-secondary btn-sm" id="submit">post</button>
-        </div>
+        <form method="post" action="/your-stories/create">
+          <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+          <div class="form-group">
+            <label for="title">The title</label>
+            <input name="title" class="form-control form-control-sm" type="text" id="title" />
+          </div>
+          <div class="form-group">
+            <label for="text">Your story</label>
+            <textarea class="form-control" name="text" id="story"></textarea>
+          </div>
+          <input type="submit" value="submit" class="btn btn-secondary btn-sm"/>
+        </form>
     </div>
   </div>
 </div>

@@ -17,6 +17,16 @@ module.exports = {
   add:function(req,res){
     res.view('pages/add-story');
   },
+  create:function(req, res){
+    let title = req.body.title;
+    let text = req.body.text;
 
+    Story.create({title:title, text:text}).exec(function(err){
+      if(err){
+        res.send(500, {error: 'DB Error'});
+      }
+      res.redirect('/your-stories');
+    });
+  }
 };
 
