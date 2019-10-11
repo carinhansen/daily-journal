@@ -20,6 +20,24 @@
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
       <p><small>Aenean commodo ligula eget dolor. Aenean massa.</small></p>
     </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Story title</th>
+        <th>story</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+        <% stories.forEach(function(story){%>
+          <tr>
+            <td><%= story.title%></td>
+            <td><%= story.text%></td>
+          </tr>
+        <% })%>
+      </tbody>
+    </table>
   </div>
 </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

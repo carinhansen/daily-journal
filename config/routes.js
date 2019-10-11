@@ -20,9 +20,9 @@ module.exports.routes = {
   'GET /legal/terms':        { action:   'legal/view-terms' },
   'GET /legal/privacy':      { action:   'legal/view-privacy' },
   'GET /contact':            { action:   'view-contact' },
-  'GET /overview':           { action:   'view-overview' },
-  'GET /add-story':          { action: 'view-add-story' },
-  'GET /your-stories':          { action: 'view-your-stories' },
+  'get /your-stories':        'StoryController.list',
+  'get /your-stories/add':        'StoryController.add',
+
 
 
   'GET /signup':             { action: 'entrance/view-signup' },
