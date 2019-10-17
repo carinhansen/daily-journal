@@ -37,6 +37,27 @@ module.exports = {
     });
 
     return false;
+  },
+  edit: function(req, res){
+    Story.findOne({id:req.params.id}).exec(function(err, story){
+      if(err){
+        res.send(500, {error: 'DB Error'});
+      }
+
+      res.view('pages/edit-story', {story:story});
+    });
+  },
+  update: function(req, res){
+    let title = req.body.title;
+    let text = req.body.text;
+
+    Story.updateOne({id: req.params.id},{title:title, text:text}).exec(function(err){
+      if(err){
+        res.send(500, {error: 'DB Error'});
+      }
+
+      res.redirect('/your-stories');
+    });
   }
 };
 

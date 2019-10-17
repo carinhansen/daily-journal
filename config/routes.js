@@ -24,6 +24,8 @@ module.exports.routes = {
   'get /your-stories/add':               'StoryController.add',
   'POST /your-stories/create':           'StoryController.create',
   'POST /your-stories/delete/:id':           'StoryController.delete',
+  'get /your-stories/edit-story/:id':           'StoryController.edit',
+  'POST /your-stories/update/:id':           'StoryController.update',
 
 
 
