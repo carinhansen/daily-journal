@@ -1,26 +1,9 @@
 <div id="your-stories">
   <div class="container">
-    <h1>Your stories</h1>
-    <a class="btn btn-outline-info mt-5" href="/your-stories/add">Add stories</a>
-    <div class="q-and-a">
-      <hr class="mt-4 mb-4"/>
-      <h4>Aenean commodo ligula</h4>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-      <p><small>Aenean commodo ligula eget dolor. Aenean massa.</small></p>
+    <div class="header-container">
+      <h1>Your stories</h1>
+      <a class="btn btn-outline-info mt-5 header-btn" href="/your-stories/add">Add stories</a>
     </div>
-    <div class="q-and-a">
-      <hr class="mt-4 mb-4"/>
-      <h4>Aenean commodo ligula</h4>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-      <p><small>Aenean commodo ligula eget dolor. Aenean massa.</small></p>
-    </div>
-    <div class="q-and-a">
-      <hr class="mt-4 mb-4"/>
-      <h4>Aenean commodo ligula</h4>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-      <p><small>Aenean commodo ligula eget dolor. Aenean massa.</small></p>
-    </div>
-
     <table class="table table-striped">
       <thead>
       <tr>
@@ -30,7 +13,9 @@
       </tr>
       </thead>
       <tbody>
-        <% stories.forEach(function(story){%>
+        <% stories.forEach(function(story){
+            if(story.owner == me.id){
+        %>
           <tr>
             <td><%= story.title%></td>
             <td><%= story.text%></td>
@@ -42,7 +27,7 @@
               </form>
             </td>
           </tr>
-        <% })%>
+        <% }})%>
       </tbody>
     </table>
   </div>
