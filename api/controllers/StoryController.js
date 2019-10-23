@@ -20,8 +20,9 @@ module.exports = {
   create:function(req, res){
     let title = req.body.title;
     let text = req.body.text;
+    const owner = req.me.id;
 
-    Story.create({title:title, text:text}).exec(function(err){
+    Story.create({title:title, text:text, owner: owner}).exec(function(err){
       if(err){
         res.send(500, {error: 'DB Error'});
       }

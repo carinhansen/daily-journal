@@ -16,6 +16,9 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    owner: {
+      type: 'integer',
+    }
   },
 
 };
