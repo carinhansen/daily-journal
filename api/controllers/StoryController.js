@@ -14,6 +14,14 @@ module.exports = {
       res.view('pages/your-stories', {stories:stories});
     });
   },
+  overview:function(req,res){
+    Story.find({}).exec(function(err, stories){
+      if(err){
+        res.send(500, {error: 'DB Error'});
+      }
+      res.view('pages/overview', {stories:stories});
+    });
+  },
   add:function(req,res){
     res.view('pages/add-story');
   },
