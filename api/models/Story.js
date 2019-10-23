@@ -15,6 +15,7 @@ module.exports = {
     text: {
       type: 'string',
       required: true,
+      columnType: 'text'
     },
     owner: {
       type: 'integer',
