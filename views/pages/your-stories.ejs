@@ -9,16 +9,17 @@
       <tr>
         <th>Story title</th>
         <th>story</th>
+        <th>Published</th>
         <th></th>
       </tr>
       </thead>
       <tbody>
         <% stories.forEach(function(story){
-            if(story.owner == me.id){
         %>
           <tr>
             <td><%= story.title%></td>
             <td><%= story.text%></td>
+            <td><%= story.published%></td>
             <td style="display: flex; justify-content: space-around;">
               <a href="/your-stories/edit-story/<%= story.id%>" class="btn btn-secondary">Edit</a>
               <form action="/your-stories/delete/<%= story.id%>" method="post">
@@ -27,7 +28,7 @@
               </form>
             </td>
           </tr>
-        <% }})%>
+        <% })%>
       </tbody>
     </table>
   </div>

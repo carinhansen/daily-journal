@@ -30,12 +30,14 @@ module.exports = {
     let text = req.body.text;
     const owner = req.me.id;
     let category = req.body.category;
+    let published = req.body.published;
+    console.log(published);
+    res.redirect('/your-stories');
 
-    Story.create({title:title, text:text, owner: owner, category: category}).exec(function(err){
-      if(err){
-        res.send(500, {error: 'DB Error'});
-      }
-      res.redirect('/your-stories');
+    Story.create({title:title, text:text, owner: owner, category: category, published: published}).exec(function(err){
+      // if(err){
+      //   res.send(500, {error: 'DB Error'});
+      // }
     });
   },
   delete:function(req, res){
@@ -61,8 +63,9 @@ module.exports = {
     let title = req.body.title;
     let text = req.body.text;
     let category = req.body.category;
+    let published = req.body.published;
 
-    Story.updateOne({id: req.params.id},{title:title, text:text, category: category}).exec(function(err){
+    Story.updateOne({id: req.params.id},{title:title, text:text, category: category, published: published}).exec(function(err){
       if(err){
         res.send(500, {error: 'DB Error'});
       }

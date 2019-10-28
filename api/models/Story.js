@@ -26,6 +26,7 @@ module.exports = {
     },
     published: {
       type: 'boolean',
+      defaultsTo: false
     }
   },
 

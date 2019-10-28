@@ -26,6 +26,10 @@
             <option>Other</option>
           </select>
         </div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="true" name="published" <% if(story.published){ %><%= 'checked' %><% }%>>Published</label>
+        </div>
         <input type="submit" value="submit" class="btn btn-secondary btn-sm"/>
       </form>
     </div>
