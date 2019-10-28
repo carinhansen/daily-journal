@@ -19,6 +19,13 @@ module.exports = {
     },
     owner: {
       type: 'integer',
+    },
+    category: {
+      type: 'string',
+      required: true,
+    },
+    published: {
+      type: 'boolean',
     }
   },
 

@@ -7,11 +7,22 @@
           <input type="hidden" name="_csrf" value="<%- _csrf %>" />
           <div class="form-group">
             <label for="title">The title</label>
-            <input name="title" class="form-control form-control-sm" type="text" id="title" />
+            <input name="title" class="form-control form-control-sm" type="text" id="title" required/>
           </div>
           <div class="form-group">
             <label for="text">Your story</label>
-            <textarea class="form-control" name="text" id="story"></textarea>
+            <textarea class="form-control" name="text" id="story" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="category">Select list:</label>
+            <select class="form-control" id="category" name="category" required>
+              <option value="" selected="selected" hidden="hidden">Choose here</option>
+              <option>Work</option>
+              <option>Vacation</option>
+              <option>School</option>
+              <option>Fun</option>
+              <option>Other</option>
+            </select>
           </div>
           <input type="submit" value="submit" class="btn btn-secondary btn-sm"/>
         </form>

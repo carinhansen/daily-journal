@@ -7,7 +7,7 @@
 
 module.exports = {
   list:function(req,res){
-    Story.find({}).exec(function(err, stories){
+    Story.find({owner: req.me.id}).exec(function(err, stories){
       if(err){
         res.send(500, {error: 'DB Error'});
       }
@@ -29,8 +29,9 @@ module.exports = {
     let title = req.body.title;
     let text = req.body.text;
     const owner = req.me.id;
+    let category = req.body.category;
 
-    Story.create({title:title, text:text, owner: owner}).exec(function(err){
+    Story.create({title:title, text:text, owner: owner, category: category}).exec(function(err){
       if(err){
         res.send(500, {error: 'DB Error'});
       }
@@ -59,8 +60,9 @@ module.exports = {
   update: function(req, res){
     let title = req.body.title;
     let text = req.body.text;
+    let category = req.body.category;
 
-    Story.updateOne({id: req.params.id},{title:title, text:text}).exec(function(err){
+    Story.updateOne({id: req.params.id},{title:title, text:text, category: category}).exec(function(err){
       if(err){
         res.send(500, {error: 'DB Error'});
       }

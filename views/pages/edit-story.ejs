@@ -2,23 +2,33 @@
 <div id="edit-story">
   <div class="container">
     <h1>Edit your story</h1>
-    <% if(me && story.owner === me.id || me.isSuperAdmin) { %>
+
     <div class="q-and-a">
       <hr class="mt-4 mb-4"/>
       <form method="post" action="/your-stories/update/<%= story.id%>">
         <input type="hidden" name="_csrf" value="<%- _csrf %>" />
         <div class="form-group">
           <label for="title">The title</label>
-          <input name="title" class="form-control form-control-sm" type="text" id="title" value="<%= story.title %>" />
+          <input name="title" class="form-control form-control-sm" type="text" id="title" value="<%= story.title %>" required/>
         </div>
         <div class="form-group">
           <label for="text">Your story</label>
-          <textarea class="form-control" name="text"><%= story.text %></textarea>
+          <textarea class="form-control" name="text" required><%= story.text %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="category">Select list:</label>
+          <select class="form-control" id="category" name="category" required>
+            <option value="" selected="selected" hidden="hidden">Choose here</option>
+            <option>Work</option>
+            <option>Vacation</option>
+            <option>School</option>
+            <option>Fun</option>
+            <option>Other</option>
+          </select>
         </div>
         <input type="submit" value="submit" class="btn btn-secondary btn-sm"/>
       </form>
     </div>
-  <% } %>
   </div>
 </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
