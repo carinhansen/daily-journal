@@ -7,15 +7,22 @@
 
 module.exports = {
   list:function(req,res){
-    Story.find({owner: req.me.id}).exec(function(err, stories){
+    Story.find({owner: req.me.id}).exec((err, stories) => {
       if(err){
         res.send(500, {error: 'DB Error'});
       }
       res.view('pages/your-stories', {stories:stories});
     });
   },
-  overview:function(req,res){
-    Story.find({}).exec(function(err, stories){
+  overview: function(req,res){
+    let search = req.param('search');
+    Story.find({
+      published: true,
+      or : [
+        {title: search },
+        {text: search},
+        {category: search}
+    ]}).exec((err, stories) => {
       if(err){
         res.send(500, {error: 'DB Error'});
       }
@@ -31,17 +38,16 @@ module.exports = {
     const owner = req.me.id;
     let category = req.body.category;
     let published = req.body.published;
-    console.log(published);
-    res.redirect('/your-stories');
 
-    Story.create({title:title, text:text, owner: owner, category: category, published: published}).exec(function(err){
-      // if(err){
-      //   res.send(500, {error: 'DB Error'});
-      // }
+    Story.create({title:title, text:text, owner: owner, category: category, published: published}).exec((err) => {
+      if(err){
+        res.send(500, {error: 'DB Error'});
+      }
+      res.redirect('/your-stories');
     });
   },
   delete:function(req, res){
-    Story.destroy({id:req.params.id}).exec(function(err){
+    Story.destroy({id:req.params.id}).exec((err) => {
       if(err){
         res.send(500, {error: 'DB Error'});
       }
@@ -51,7 +57,7 @@ module.exports = {
     return false;
   },
   edit: function(req, res){
-    Story.findOne({id:req.params.id}).exec(function(err, story){
+    Story.findOne({id:req.params.id}).exec((err, story) => {
       if(err){
         res.send(500, {error: 'DB Error'});
       }
@@ -65,7 +71,17 @@ module.exports = {
     let category = req.body.category;
     let published = req.body.published;
 
-    Story.updateOne({id: req.params.id},{title:title, text:text, category: category, published: published}).exec(function(err){
+    Story.updateOne({id: req.params.id},{title:title, text:text, category: category, published: published}).exec((err) => {
+      if(err){
+        res.send(500, {error: 'DB Error'});
+      }
+
+      res.redirect('/your-stories');
+    });
+  },
+  publish: async function(req, res){
+    let publish = await Story.findOne({id:req.params.id});
+    Story.update({id:req.params.id},{published: !publish.published}).exec((err) => {
       if(err){
         res.send(500, {error: 'DB Error'});
       }

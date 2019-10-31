@@ -4,23 +4,19 @@
       <h1>Overview of all stories</h1>
       <a class="btn btn-outline-info mt-5 header-btn" href="/your-stories/add">Add stories</a>
     </div>
+    <form method="get" action="/overview">
+      <div class="form-group">
+        <label for="title">Search</label>
+        <input name="search" class="form-control form-control-sm" type="text" id="search"/>
+      </div>
+      <input type="submit" value="submit" class="btn btn-secondary btn-sm"/>
+    </form>
     <% stories.forEach(function(story){ %>
       <div class="q-and-a">
         <hr class="mt-4 mb-4"/>
         <h4><%= story.title%></h4>
         <p><%= story.text%></p>
-        <p><small>Aenean commodo ligula eget dolor. Aenean massa.</small></p>
-          <% if(story.owner == me.id || me.isSuperAdmin == true){ %>
-            <div class="button-container">
-              <div class="inner-button-container">
-                <a href="/your-stories/edit-story/<%= story.id%>" class="btn btn-secondary">Edit</a>
-                <form action="/your-stories/delete/<%= story.id%>" method="post">
-                  <input type="hidden" name="_csrf" value="<%- _csrf %>" />
-                  <input type="submit" value="Delete" class="btn btn-danger"/>
-                </form>
-              </div>
-            </div>
-        <% } %>
+        <p><small>Category: <%= story.category%></small></p>
       </div>
     <% })%>
   </div>

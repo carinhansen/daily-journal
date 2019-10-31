@@ -20,13 +20,15 @@ module.exports.routes = {
   'GET /legal/terms':        { action:   'legal/view-terms' },
   'GET /legal/privacy':      { action:   'legal/view-privacy' },
   'GET /contact':            { action:   'view-contact' },
-  'get /overview':                   'StoryController.overview',
+  'get /overview':                       'StoryController.overview',
+  'get /overview?search=':              'StoryController.overview',
   'get /your-stories':                   'StoryController.list',
   'get /your-stories/add':               'StoryController.add',
   'POST /your-stories/create':           'StoryController.create',
-  'POST /your-stories/delete/:id':           'StoryController.delete',
-  'get /your-stories/edit-story/:id':           'StoryController.edit',
-  'POST /your-stories/update/:id':           'StoryController.update',
+  'POST /your-stories/delete/:id':       'StoryController.delete',
+  'get /your-stories/edit-story/:id':    'StoryController.edit',
+  'POST /your-stories/update/:id':       'StoryController.update',
+  'POST /your-stories/publish/:id':      'StoryController.publish',
 
 
 
