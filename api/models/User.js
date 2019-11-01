@@ -55,6 +55,9 @@ email status until they click the link in the confirmation email.`
       maxLength: 120,
       example: 'Mary Sue van der McHenst'
     },
+    numberOfComments: {
+      type: 'integer',
+    },
 
     isSuperAdmin: {
       type: 'boolean',

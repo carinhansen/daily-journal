@@ -1,0 +1,41 @@
+<div id="admin-stories">
+  <div class="container">
+    <div class="header-container">
+      <h1>Admin - all stories</h1>
+      <a class="btn btn-outline-info mt-5 header-btn" href="/your-stories/add">Add stories</a>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Story title</th>
+        <th>Story</th>
+        <th>Category</th>
+        <th>Published</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% stories.forEach(function(story){ %>
+        <tr>
+          <td><%= story.title%></td>
+          <td><%= story.text%></td>
+          <td><%= story.category%></td>
+          <td><%= story.published%></td>
+          <td style="display: flex; justify-content: space-around;">
+            <a href="/your-stories/edit-story/<%= story.id%>" class="btn btn-secondary">Edit</a>
+            <form action="/your-stories/publish/<%= story.id%>" method="post">
+              <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+              <input type="submit" value="Publish" class="btn btn-secondary"/>
+            </form>
+            <form action="/your-stories/delete/<%= story.id%>" method="post">
+              <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+              <input type="submit" value="Delete" class="btn btn-danger"/>
+            </form>
+          </td>
+        </tr>
+      <% })%>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

@@ -6,6 +6,15 @@
     </div>
     <form method="get" action="/overview">
       <div class="form-group">
+        <label for="category">Select list:</label>
+        <select class="form-control" id="category" name="category">
+          <option value="" selected="selected" hidden="hidden">Choose here</option>
+          <option>Work</option>
+          <option>Vacation</option>
+          <option>School</option>
+          <option>Fun</option>
+          <option>Other</option>
+        </select>
         <label for="title">Search</label>
         <input name="search" class="form-control form-control-sm" type="text" id="search"/>
       </div>
@@ -14,7 +23,7 @@
     <% stories.forEach(function(story){ %>
       <div class="q-and-a">
         <hr class="mt-4 mb-4"/>
-        <h4><%= story.title%></h4>
+        <h4><a href="/detail/<%= story.id%>"><%= story.title%></a></h4>
         <p><%= story.text%></p>
         <p><small>Category: <%= story.category%></small></p>
       </div>

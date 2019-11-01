@@ -10,7 +10,17 @@
 
 module.exports.policies = {
 
+  UserController: {
+    '*': 'is-logged-in',
+    'delete': 'is-owner',
+  },
+
+  StoryController: {
+    'adminOverview': 'is-admin',
+  },
+
   '*': 'is-logged-in',
+  'StoryController.edit': 'is-owner',
 
   // Bypass the `is-logged-in` policy for:
   'entrance/*': true,
