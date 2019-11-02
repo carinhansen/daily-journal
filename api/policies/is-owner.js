@@ -9,18 +9,17 @@
  *   https://sailsjs.com/docs/concepts/policies/access-control-and-permissions
  */
 module.exports = async function (req, res, proceed) {
+  let story = await Story.findOne({id: req.params.id});
+  let userId = await story.owner;
+  console.log(!req.me.isSuperAdmin)
+  console.log(!userId === req.me.id)
+  console.log(userId === req.me.id)
 
-  // If `req.me` is set, then we know that this request originated
-  // from a logged-in user.  So we can safely proceed to the next policy--
-  // or, if this is the last policy, the relevant action.
-  // > For more about where `req.me` comes from, check out this app's
-  // > custom hook (`api/hooks/custom/index.js`).
-  // Then check that this user is a "super admin".
-  if (!req.me.isSuperAdmin) {
+  if (userId === req.me.id) {
+    return proceed();
+  } else if(req.me.isSuperAdmin) {
+    return proceed();
+  } else {
     return res.forbidden();
-  }//•
-
-  // IWMIH, we've got ourselves a "super admin".
-  return proceed();
-
+  }
 };
