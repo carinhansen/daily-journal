@@ -11,9 +11,6 @@
 module.exports = async function (req, res, proceed) {
   let story = await Story.findOne({id: req.params.id});
   let userId = await story.owner;
-  console.log(!req.me.isSuperAdmin)
-  console.log(!userId === req.me.id)
-  console.log(userId === req.me.id)
 
   if (userId === req.me.id) {
     return proceed();

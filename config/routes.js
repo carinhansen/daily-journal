@@ -31,7 +31,7 @@ module.exports.routes = {
   'POST /your-stories/update/:id':       'StoryController.update',
   'POST /your-stories/publish/:id':      'StoryController.publish',
   'POST /your-stories/like/:id':         'LikeController.like',
-  'POST /your-stories/unlike/:id':        'LikeController.unlike',
+  'POST /your-stories/unlike/:id':       'LikeController.unlike',
   'POST /detail/comment/:id':            'CommentController.comment',
 
 
